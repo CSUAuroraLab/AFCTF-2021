@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>search</title>
+    <link rel="stylesheet" href="./css/fontawesome-free-5.11.2-web/css/all.css">
+    <link rel="stylesheet" href="./css/main.css">
+    </title>
+    <script>
+        function search() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("res").innerHTML = xmlhttp.responseText;
+                }
+            }
+            resdiv = document.getElementById("res");
+            resdiv.style.display = "block";
+            xmlhttp.open("GET", "./search.php?search=" + document.getElementById("search_input").value, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+
+<body class="index">
+    <form onsubmit="search()" class="search-box search-box_1">
+        <input autofocus id="search_input" class="search-txt" type="text" autocomplete="off" placeholder="Type to search">
+        <a class="search-btn" href="#" onclick="search()">
+            <i class="fas fa-search" onclick="search()"></i>
+        </a>
+    </form>
+    <div id="res">
+
+    </div>
+</body>
+
+</html>

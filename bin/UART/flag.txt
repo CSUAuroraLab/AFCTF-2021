@@ -1,0 +1,1 @@
+aurora{from_k210_platform_firmware}
